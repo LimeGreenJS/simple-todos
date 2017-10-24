@@ -1,4 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-ReactDOM.render(<h1>Simple TODOs</h1>, document.getElementById('app'));
+const render = () => {
+  const App = require('./App').default;
+  ReactDOM.render(<App />, document.getElementById('app'));
+};
+render();
+
+if (module.hot) {
+  module.hot.accept('./App', render);
+}
