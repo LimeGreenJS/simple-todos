@@ -1,16 +1,13 @@
 import React from 'react';
-import {
-  createNetworkInterface,
-  ApolloClient,
-  ApolloProvider,
-} from 'react-apollo';
+import ApolloClient, { HttpLink } from 'apollo-client-preset';
+import { ApolloProvider } from 'react-apollo';
 
 import TodoList from './TodoList';
 
-const networkInterface = createNetworkInterface({
+const link = new HttpLink({
   uri: 'https://api.graphcms.com/simple/v1/cj95kuyzo1cwd012521echyb4',
 });
-const client = new ApolloClient({ networkInterface });
+const client = new ApolloClient({ link });
 
 const App = () => (
   <ApolloProvider client={client}>
