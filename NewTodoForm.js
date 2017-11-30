@@ -23,7 +23,7 @@ const NewTodoForm = ({ mutate }) => {
 };
 
 const CREATE_TASK = gql`
-mutation createTask($title: String!, $description: String){
+mutation createTask($title: String!, $description: String) {
   createTask(title: $title, description: $description) {
     id
     title
