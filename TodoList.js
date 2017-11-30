@@ -17,7 +17,7 @@ const TodoList = ({ data: { loading, error, allTasks } }) => (
   )
 );
 
-const query = gql`
+const QUERY_ALL_TASKS = gql`
 {
   allTasks(orderBy: createdAt_DESC) {
     id
@@ -27,4 +27,4 @@ const query = gql`
 }
 `;
 
-export default graphql(query)(TodoList);
+export default graphql(QUERY_ALL_TASKS)(TodoList);

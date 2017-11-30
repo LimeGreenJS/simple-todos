@@ -6,6 +6,7 @@ const NewTodoForm = ({ mutate }) => {
   const onClick = (event) => {
     event.preventDefault();
     const title = event.target.parentNode.title.value;
+    if (!title) return;
     const description = event.target.parentNode.description.value;
     mutate({ variables: { title, description } });
   };
@@ -19,7 +20,7 @@ const NewTodoForm = ({ mutate }) => {
   );
 };
 
-const query = gql`
+const CREATE_TASK = gql`
 mutation createTask($title: String!, $description: String){
   createTask(title: $title, description: $description) {
     id
@@ -29,4 +30,4 @@ mutation createTask($title: String!, $description: String){
 }
 `;
 
-export default graphql(query)(NewTodoForm);
+export default graphql(CREATE_TASK)(NewTodoForm);
