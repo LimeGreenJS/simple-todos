@@ -2,6 +2,8 @@ import React from 'react';
 import gql from 'graphql-tag';
 import { graphql } from 'react-apollo';
 
+import { QUERY_ALL_TASKS } from './TodoList';
+
 const NewTodoForm = ({ mutate }) => {
   const onClick = (event) => {
     event.preventDefault();
@@ -30,4 +32,14 @@ mutation createTask($title: String!, $description: String){
 }
 `;
 
-export default graphql(CREATE_TASK)(NewTodoForm);
+const config = {
+  options: {
+    update: (proxy, { data: { createTask } }) => {
+      const data = proxy.readQuery({ query: QUERY_ALL_TASKS });
+      data.allTasks.unshift(createTask);
+      proxy.writeQuery({ query: QUERY_ALL_TASKS, data });
+    },
+  },
+};
+
+export default graphql(CREATE_TASK, config)(NewTodoForm);

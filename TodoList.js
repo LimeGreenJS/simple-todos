@@ -17,7 +17,7 @@ const TodoList = ({ data: { loading, error, allTasks } }) => (
   )
 );
 
-const QUERY_ALL_TASKS = gql`
+export const QUERY_ALL_TASKS = gql`
 {
   allTasks(orderBy: createdAt_DESC) {
     id
