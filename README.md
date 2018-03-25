@@ -1,4 +1,4 @@
-# example-simple-todos
+# simple-todos
 LimeGreenJS-enabled simple todos example
 
 ## Graphcool schema
