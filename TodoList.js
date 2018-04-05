@@ -28,5 +28,5 @@ export const QUERY_ALL_TASKS = gql`
 `;
 
 export default graphql(QUERY_ALL_TASKS, {
-  options: { fetchPolicy: 'network-only' },
+  options: { fetchPolicy: 'no-cache' },
 })(TodoList);
